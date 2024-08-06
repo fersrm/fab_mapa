@@ -276,15 +276,20 @@ table.show {
 }
 
 .total-general {
-    background: #1772b8b3;
     position: absolute;
     padding: 8px;
     border-radius: 10px;
-    color: #fffefe;
     bottom: -32px;
     display: flex;
+    align-items: center;
     gap: 5px;
     left: -130px;
+    color: #38ae6d;
+
+    svg {
+        width: 29px;
+        fill: #38ae6d;
+    }
 
     p {
         font-weight: bold;
