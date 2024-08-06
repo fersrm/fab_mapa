@@ -73,8 +73,7 @@ async function createTable(titulo, comuna) {
     const table = document.createElement("table");
 
     table.innerHTML = createTableHTML(titulo, filteredData);
-
-    if (!document.querySelector("table")) {
+    if (!document.querySelector(".selected-svg-container table")) {
         selectedSvgContainer.appendChild(table);
 
         table.classList.remove("show");
@@ -190,39 +189,68 @@ async function calculateTotalForComunas(comunas) {
     const data = await loadData();
 
     let totalSum = 0;
+    let comunaTotals = [];
 
-    for (const comuna of comunas) {
-        const filteredData = filterData(data, comuna);
-        totalSum += total(filteredData);
+    for (const [key, value] of Object.entries(comunas)) {
+        const filteredData = filterData(data, key);
+        const comunaTotal = total(filteredData);
+        totalSum += comunaTotal;
+        comunaTotals.push({ comuna: value, total: comunaTotal });
     }
+
+    // Ordenar por el total en orden ascendente
+    comunaTotals.sort((a, b) => a.total - b.total);
+
+    // Obtener las 3 comunas con menos COUNT
+    const threeLeast = comunaTotals.slice(0, 3);
+
+    // Mostrar las 3 comunas con menos COUNT en la tabla
+    const tbody = document.querySelector(".total-general table tbody");
+    tbody.innerHTML = ""; // Limpiar el tbody antes de añadir nuevas filas
+
+    threeLeast.forEach((item) => {
+        const row = document.createElement("tr");
+
+        const comunaCell = document.createElement("td");
+        comunaCell.textContent = item.comuna;
+        row.appendChild(comunaCell);
+
+        const countCell = document.createElement("td");
+        countCell.textContent = item.total;
+        row.appendChild(countCell);
+
+        tbody.appendChild(row);
+    });
+
+    console.log("Las 3 comunas con menos COUNT:", threeLeast);
 
     return totalSum;
 }
 
 // Lista de comunas
-const comunas = [
-    "SAN FABIAN",
-    "COIHUECO",
-    "PINTO",
-    "SAN CARLOS",
-    "YUNGAY",
-    "EL CARMEN",
-    "COBQUECURA",
-    "QUIRIHUE",
-    "PEMUCO",
-    "SAN NICOLAS",
-    "NIQUEN",
-    "CHILLAN",
-    "BULNES",
-    "QUILLON",
-    "NINHUE",
-    "COELEMU",
-    "SAN IGNACIO",
-    "TREHUACO",
-    "CHILLAN VIEJO",
-    "PORTEZUELO",
-    "RANQUIL",
-];
+const comunas = {
+    "SAN FABIAN": "San Fabián",
+    COIHUECO: "Coihueco",
+    PINTO: "Pinto",
+    "SAN CARLOS": "San Carlos",
+    YUNGAY: "Yungay",
+    "EL CARMEN": "El Carmen",
+    COBQUECURA: "Cobquecura",
+    QUIRIHUE: "Quirihue",
+    PEMUCO: "Pemuco",
+    "SAN NICOLAS": "San Nicolás",
+    NIQUEN: "Ñiquén",
+    CHILLAN: "Chillán",
+    BULNES: "Bulnes",
+    QUILLON: "Quillón",
+    NINHUE: "Ninhue",
+    COELEMU: "Coelemu",
+    "SAN IGNACIO": "San Ignacio",
+    TREHUACO: "Trehuaco",
+    "CHILLAN VIEJO": "Chillán Viejo",
+    PORTEZUELO: "Portezuelo",
+    RANQUIL: "Ránquil",
+};
 
 calculateTotalForComunas(comunas).then((total) => {
     const totalGeneral = document.querySelector(".total-general p");

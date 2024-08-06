@@ -38,8 +38,8 @@ main {
 .title {
     display: flex;
     justify-content: space-between;
-    margin: 0 20px;
-    margin-top: 20px;
+    margin: 0px 65px;
+    margin-top: 29px;
 
     .container__img {
         max-width: 150px;
@@ -52,6 +52,7 @@ main {
 
     h1 {
         color: #6e6e6e;
+        padding-top: 23px;
     }
 }
 
@@ -155,7 +156,7 @@ main {
 }
 
 /* Estilos generales de la tabla */
-table {
+.selected-svg-container table {
     width: 70%;
     border-collapse: collapse;
     margin: 20px 0;
@@ -194,11 +195,15 @@ table {
     th {
         text-align: left;
     }
+
+    .total {
+        color: #000000;
+    }
 }
 
 /* Estilos para la tabla en dispositivos móviles */
 @media (max-width: 600px) {
-    table {
+    .selected-svg-container table {
         width: 100%;
         display: block;
         overflow-x: auto;
@@ -235,7 +240,7 @@ button {
 }
 
 .selected-svg-container svg .show,
-table.show {
+.selected-svg-container table.show {
     opacity: 1;
     transform: scale(1);
 }
@@ -276,15 +281,14 @@ table.show {
 }
 
 .total-general {
-    position: absolute;
     padding: 8px;
-    border-radius: 10px;
-    bottom: -32px;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
     gap: 5px;
-    left: -130px;
     color: #38ae6d;
+    margin-right: 40px;
+    justify-content: space-between;
 
     svg {
         width: 29px;
@@ -294,11 +298,20 @@ table.show {
     p {
         font-weight: bold;
     }
+
+    table {
+        color: #ff0000;
+        font-size: 16px;
+        width: 165px;
+    }
 }
 
 .hidden {
     display: none;
 }
-.total {
-    color: #000000;
+
+.total-svg {
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
