@@ -44,13 +44,13 @@ main {
     .container__img {
         max-width: 150px;
 
-        img {
+        & img {
             width: 100%;
             object-fit: cover;
         }
     }
 
-    h1 {
+    & h1 {
         color: #6e6e6e;
         padding-top: 23px;
     }
@@ -73,7 +73,7 @@ main {
     position: relative;
     transition: width 0.5s ease, margin-left 0.5s ease;
 
-    path {
+    & path {
         transition: fill 0.3s;
         stroke-width: 0px;
         cursor: pointer;
@@ -109,7 +109,7 @@ main {
     background-color: #f9f9f9;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 
-    li {
+    & li {
         list-style: none;
     }
 }
@@ -140,11 +140,11 @@ main {
     gap: 20px;
     padding: 10px;
 
-    svg {
+    & svg {
         width: 45%;
     }
 
-    path {
+    & path {
         fill: #8176b7;
         stroke: #ffffff;
         stroke-width: 1px;
@@ -166,13 +166,13 @@ main {
     transform: scale(0.9);
     transition: opacity 0.3s ease, transform 0.3s ease;
 
-    caption {
+    & caption {
         padding-bottom: 8px;
         font-weight: bold;
         font-size: 20px;
     }
 
-    thead th {
+    & thead th {
         background-color: #f4f4f4;
         color: #333;
         padding: 12px;
@@ -181,18 +181,18 @@ main {
         font-weight: bold;
     }
 
-    tbody td {
+    & tbody td {
         padding: 10px;
         border-bottom: 1px solid #ddd;
         color: #555;
     }
 
-    tbody tr:nth-child(even) {
+    & tbody tr:nth-child(even) {
         background-color: #f9f9f9;
     }
 
-    td,
-    th {
+    & td,
+    & th {
         text-align: left;
     }
 
@@ -221,7 +221,7 @@ button {
     border-radius: 8px;
     display: none;
 
-    svg {
+    & svg {
         width: 20px;
     }
 
@@ -290,16 +290,16 @@ button {
     margin-right: 40px;
     justify-content: space-between;
 
-    svg {
+    & svg {
         width: 29px;
         fill: #38ae6d;
     }
 
-    p {
+    & p {
         font-weight: bold;
     }
 
-    table {
+    & table {
         color: #ff0000;
         font-size: 16px;
         width: 165px;
