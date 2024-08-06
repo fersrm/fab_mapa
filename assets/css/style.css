@@ -1,0 +1,299 @@
+/* Fuentes */
+@font-face {
+    font-family: Roboto-Bold;
+    src: url(../font/Roboto-Bold.ttf);
+}
+
+@font-face {
+    font-family: Roboto-Regular;
+    src: url(../font/Roboto-Regular.ttf);
+}
+
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Roboto-Regular", sans-serif;
+}
+
+main {
+    padding: 20px;
+}
+
+/* Contenedores principales */
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.container_contex {
+    width: 100%;
+    margin: 12px;
+}
+
+.title {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 20px;
+    margin-top: 20px;
+
+    .container__img {
+        max-width: 150px;
+
+        img {
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+
+    h1 {
+        color: #6e6e6e;
+    }
+}
+
+/* Mapas */
+.map {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+
+    &.path_active {
+        justify-content: space-between;
+    }
+}
+
+.map__svg {
+    width: 750px;
+    position: relative;
+    transition: width 0.5s ease, margin-left 0.5s ease;
+
+    path {
+        transition: fill 0.3s;
+        stroke-width: 0px;
+        cursor: pointer;
+
+        &:hover,
+        a.active & {
+            fill: #4c37c2;
+            stroke: #ffffff;
+            stroke-width: 1px;
+        }
+
+        &.active_path {
+            fill: #8176b7;
+            stroke: #ffffff;
+            stroke-width: 1px;
+        }
+    }
+
+    &.path_active {
+        width: 150px;
+        position: relative;
+        margin-left: 20px;
+    }
+}
+
+.map__list {
+    width: 100%;
+    max-width: 20%;
+    max-height: 600px;
+    overflow-y: scroll;
+    padding: 10px 15px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+    li {
+        list-style: none;
+    }
+}
+
+.map__list a {
+    display: block;
+    color: #333;
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 8px 15px;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+
+    &:hover,
+    &.active {
+        background-color: #e0e0e0;
+        color: #1a1a1a;
+        font-weight: 500;
+    }
+}
+
+/* Contenedor de SVG seleccionado */
+.selected-svg-container {
+    background: aliceblue;
+    border-radius: 8px;
+    margin-top: 15px;
+    display: none;
+    gap: 20px;
+    padding: 10px;
+
+    svg {
+        width: 45%;
+    }
+
+    path {
+        fill: #8176b7;
+        stroke: #ffffff;
+        stroke-width: 1px;
+    }
+
+    &.path_active {
+        display: flex;
+    }
+}
+
+/* Estilos generales de la tabla */
+table {
+    width: 70%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
+    background-color: #e1dfdf;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+
+    caption {
+        padding-bottom: 8px;
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    thead th {
+        background-color: #f4f4f4;
+        color: #333;
+        padding: 12px;
+        text-align: left;
+        border-bottom: 2px solid #ddd;
+        font-weight: bold;
+    }
+
+    tbody td {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+        color: #555;
+    }
+
+    tbody tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    td,
+    th {
+        text-align: left;
+    }
+}
+
+/* Estilos para la tabla en dispositivos móviles */
+@media (max-width: 600px) {
+    table {
+        width: 100%;
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
+
+/* Botones */
+button {
+    width: 60px;
+    height: 40px;
+    cursor: pointer;
+    background-color: #9cc1dd;
+    border: none;
+    border-radius: 8px;
+    display: none;
+
+    svg {
+        width: 20px;
+    }
+
+    &.path_active {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+/* Estilos de transición */
+.selected-svg-container svg path {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.selected-svg-container svg .show,
+table.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.no-data {
+    text-align: center;
+    font-size: 22px;
+}
+.highlight path {
+    fill: #4c37c2;
+    stroke: #ffffff;
+    stroke-width: 1px;
+}
+
+/* ------------ */
+.duju,
+.puntilla,
+.itata {
+    width: 355px;
+    height: 255px;
+    position: absolute;
+    z-index: -10;
+}
+
+.duju {
+    top: 340px;
+    left: 340px;
+}
+
+.puntilla {
+    top: -114px;
+    right: 74px;
+}
+
+.itata {
+    left: -249px;
+    bottom: 165px;
+}
+
+.total-general {
+    background: #1772b8b3;
+    position: absolute;
+    padding: 8px;
+    border-radius: 10px;
+    color: #fffefe;
+    bottom: -32px;
+    display: flex;
+    gap: 5px;
+    left: -130px;
+
+    p {
+        font-weight: bold;
+    }
+}
+
+.hidden {
+    display: none;
+}
+.total {
+    color: #000000;
+}
