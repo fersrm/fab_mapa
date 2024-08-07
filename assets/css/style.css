@@ -40,6 +40,7 @@ main {
     justify-content: space-between;
     margin: 0px 65px;
     margin-top: 29px;
+    align-items: center;
 
     .container__img {
         max-width: 150px;
@@ -201,16 +202,6 @@ main {
     }
 }
 
-/* Estilos para la tabla en dispositivos móviles */
-@media (max-width: 600px) {
-    .selected-svg-container table {
-        width: 100%;
-        display: block;
-        overflow-x: auto;
-        white-space: nowrap;
-    }
-}
-
 /* Botones */
 button {
     width: 60px;
@@ -314,4 +305,43 @@ button {
     display: flex;
     align-items: center;
     gap: 5px;
+}
+
+/* ----- DISEÑO MÓVILES ------------- */
+
+@media (width < 600px) {
+    .title {
+        flex-wrap: wrap;
+        margin: 0 32px;
+        margin-top: 20px;
+
+        .container__img {
+            max-width: 100px;
+        }
+
+        & h1 {
+            font-size: 20px;
+            order: 3;
+            width: 100%;
+            padding-top: 13px;
+        }
+
+        .container__img:nth-of-type(2) {
+            order: 2;
+        }
+    }
+
+    .selected-svg-container table {
+        width: 100%;
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    /* SOLO DE PRUEBAS EN PROCESO DISEÑO DE MÓVILES  */
+    main {
+        margin-top: 30px;
+        overflow: hidden;
+        max-width: 300px;
+    }
 }
