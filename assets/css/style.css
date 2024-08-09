@@ -309,7 +309,7 @@ button {
 
 /* ----- DISEÑO MÓVILES ------------- */
 
-@media (width < 600px) {
+@media (width < 900px) {
     .title {
         flex-wrap: wrap;
         margin: 0 32px;
@@ -337,11 +337,41 @@ button {
         overflow-x: auto;
         white-space: nowrap;
     }
+}
 
-    /* SOLO DE PRUEBAS EN PROCESO DISEÑO DE MÓVILES  */
-    main {
-        margin-top: 30px;
-        overflow: hidden;
-        max-width: 300px;
+/* SOLO DE PRUEBAS EN PROCESO DISEÑO DE MÓVILES  */
+.mensaje-error {
+    display: none;
+}
+
+@media (width < 1200px) {
+    .container {
+        display: none;
+    }
+
+    .mensaje-error {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 13px;
+
+        .container_img_error {
+            width: 10em;
+            margin: 2em;
+
+            & img {
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+
+        & h2 {
+            margin: 1em;
+        }
+
+        & p {
+            font-size: 1.2rem;
+        }
     }
 }
